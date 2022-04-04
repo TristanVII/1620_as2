@@ -16,16 +16,26 @@ function addNote(evt) {
   writeArea.insertAdjacentHTML('afterbegin', txtarea)
   const cancelBtn = document.querySelector('#cancel-button')
   cancelBtn.addEventListener('click', removeNote)
+  const saveBtn = document.querySelector('#save-button')
+  saveBtn.addEventListener('click', saveNote)
 }
 
 addBtn.addEventListener('click', addNote)
 
 //cancel button remove note
 
-
 function removeNote(evt) {
     while (writeArea.firstChild) {
       writeArea.removeChild(writeArea.firstChild);
     }
 }
+
+//save button 
+
+function saveNote(evt) {
+  const textarea = document.querySelector('textarea')
+  notes.push({title: "first note", noteBody: textarea.value, id: notes.length + 1})
+  console.log(notes)
+}
+
 
