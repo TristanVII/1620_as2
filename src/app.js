@@ -34,7 +34,10 @@ function removeNote(evt) {
 
 function saveNote(evt) {
   const textarea = document.querySelector('textarea')
-  notes.push({title: "first note", noteBody: textarea.value, id: notes.length + 1})
+  const arrayLines = textarea.value.split('\n')
+  const noteTitle = arrayLines.shift()
+  console.log(arrayLines)
+  notes.push({title: noteTitle, noteBody: arrayLines.join('\n'), id: notes.length + 1})
   console.log(notes)
 }
 
