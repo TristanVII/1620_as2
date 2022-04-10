@@ -10,15 +10,15 @@ const notes = [
 
 const addBtn = document.querySelector('i')
 const writeArea = document.querySelector('.write-note-area')
-let txtarea = "<textarea id='note-textarea'></textarea> <button id='save-button'>Save</button> <button id='cancel-button'>Cancel</button>"
+const txtarea = "<textarea id='note-textarea'></textarea> <button class='save-button'>Save</button> <button class='cancel-button'>Cancel</button>"
 const icons = document.querySelector('.icons')
 
 function addNote(evt) {
   addBtn.style.display = 'none'                    //hides add button when clicked
   writeArea.insertAdjacentHTML('afterbegin', txtarea)
-  const cancelBtn = document.querySelector('#cancel-button')
+  const cancelBtn = document.querySelector('.cancel-button')
   cancelBtn.addEventListener('click', removeNote)
-  const saveBtn = document.querySelector('#save-button')
+  const saveBtn = document.querySelector('.save-button')
   saveBtn.addEventListener('click', saveNote)
 }
 
@@ -44,14 +44,38 @@ function saveNote(evt) {
   console.log(arrayLines)
   notes.push({title: noteTitle, noteBody: arrayLines.join('\n'), id: notes.length + 1})
   console.log(notes)
-  const liTitle = "<li class='list-title'>" + noteTitle + "</li>"
-  sideNav.insertAdjacentHTML('afterbegin', liTitle)
-  const titleList = document.querySelectorAll('.list-title')
+  const liTitle = document.createElement('li') 
+  sideNav.appendChild(liTitle)
+  liTitle.insertAdjacentHTML('afterbegin', noteTitle)
+  liTitle.addEventListener('click', () => {
+    const readArea = document.querySelector('.read-note-area')
+    const noteDiv = document.createElement('div')
+    const noteParagraph = document.createElement('p')
+    const closeBtn = document.createElement('button')
+    noteDiv.className = 'note-div'
+    noteParagraph.className = 'note-paragraph'
+    noteParagraph.innerHTML = arrayLines
+    closeBtn.innerHTML = 'Close'
+    readArea.appendChild(noteDiv)
+    noteDiv.appendChild(noteParagraph)
+    noteDiv.appendChild(closeBtn)
+    closeBtn.addEventListener('click', () => {
+      closeBtn.parentElement.remove()  
+    })
+    
+  })
   removeNote(evt)                                   //After saving, removeNote function is called closing the note area
 }
 
-//display note in sidenav
+//display note in sidenav code inside the saveNote function
 
 const sideNav = document.querySelector('.notes-list')
 
+//display notes in sidenav
 
+const readArea = document.querySelector('.read-note-area')
+
+
+function readNote(evt) {
+  console.log(evt)
+}
