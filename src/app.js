@@ -26,6 +26,7 @@ function createNoteArea(evt) {
   const saveBtn = document.createElement('button')
   const cancelBtn = document.createElement('button')
   const noteTakingArea = document.createElement('div')
+  textarea.placeholder = 'Note title\nYour note here...'
   saveBtn.className = 'save-button'
   saveBtn.innerHTML = 'Save'
   cancelBtn.className = 'cancel-button'
@@ -37,6 +38,7 @@ function createNoteArea(evt) {
   noteTakingArea.appendChild(cancelBtn)
   cancelBtn.addEventListener('click', removeNote)
   saveBtn.addEventListener('click', saveNoteArray)
+  removeReadNote()
 }
 
 //cancel button remove note
@@ -56,7 +58,7 @@ function saveNoteArray(evt) {
   const textarea = document.querySelector('textarea')
   const arrayLines = textarea.value.split('\n')
   const noteTitle = arrayLines.shift()
-  const noteBody = arrayLines.join("\r\n")
+  const noteBody = arrayLines
   console.log(notes)
   notes.push({title: noteTitle, noteBody: noteBody, id: notes.length + 1}) 
   saveSidenav(noteTitle, arrayLines)
@@ -69,6 +71,7 @@ function saveSidenav(noteTitle, noteBody) {
   liTitle.insertAdjacentHTML('afterbegin', noteTitle)
   liTitle.addEventListener('click', () => {
     removeReadNote()
+    removeNote()
     createReadNoteArea(noteTitle, noteBody)
   })
 }
@@ -90,11 +93,11 @@ function createReadNoteArea(noteTitle, noteBody) {
   closeBtn.className = 'close-button'
   noteParagraph.innerHTML = noteBody
   noteHeader.innerHTML = noteTitle
-  closeBtn.innerHTML = 'Close'
+  closeBtn.innerHTML = 'X'
   readArea.appendChild(noteDiv)
+  noteDiv.appendChild(closeBtn)
   noteDiv.appendChild(noteHeader)
   noteDiv.appendChild(noteParagraph)
-  noteDiv.appendChild(closeBtn)
   closeBtn.addEventListener('click', () => {
     closeBtn.parentElement.remove()  
   })

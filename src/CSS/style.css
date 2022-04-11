@@ -116,6 +116,10 @@ i {
 }
 
 textarea {
+  font-size: 1.6rem;
+  font-family: 'Courier Prime', monospace;
+  width: 400px;
+  height: 200px;
   caret-color: var(--not-red);
   border: none;
   border-bottom: 2px solid var(--text);
@@ -136,7 +140,61 @@ footer p {
 }
 
 .note-header {
+  padding-bottom: 20px;
   font-size: 2rem;
+  text-decoration: underline;
   color: #3e8fb0;
+  font-family: 'Quicksand', sans-serif;
+}
+
+::placeholder {
+  color: #393552;
+  font-family: 'Courier Prime', monospace;
+  font-size: 1.6rem;
+}
+
+.save-button, .cancel-button {
+  font-size: 1.6rem;
+  margin-left: 5px;
+  color: #191724;
+  border: none;
+  background-color: transparent;
   font-family: 'Libre Baskerville', serif;
+}
+
+.save-button:hover {
+  color: #31748f;
+}
+
+.cancel-button:hover, .close-button:hover {
+  color: #eb6f92;
+}
+
+.notes-list li {
+  margin: 5px;
+  font-size: 1.6rem;
+}
+
+.notes-list li:hover {
+  color: #3e8fb0;
+}
+
+.note-div {
+  width: 50%;
+  background-color: #f2e9e1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.close-button {
+  font-size: 1.4rem;
+  border: none;
+  max-width: 20px;
+  background-color: transparent;
+  align-self: flex-end;
+}
+
+.note-div p {
+  font-family: 'Courier Prime', monospace;
 }
