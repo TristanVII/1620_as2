@@ -134,3 +134,9 @@ footer p {
   color: var(--text);
   font-size: var(--lrg-txt);
 }
+
+.note-header {
+  font-size: 2rem;
+  color: #3e8fb0;
+  font-family: 'Libre Baskerville', serif;
+}

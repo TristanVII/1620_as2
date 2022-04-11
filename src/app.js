@@ -68,8 +68,15 @@ function saveSidenav(noteTitle, noteBody) {
   sideNav.appendChild(liTitle)
   liTitle.insertAdjacentHTML('afterbegin', noteTitle)
   liTitle.addEventListener('click', () => {
+    removeReadNote()
     createReadNoteArea(noteTitle, noteBody)
   })
+}
+
+function removeReadNote() {
+  while (readArea.firstChild) {
+    readArea.removeChild(readArea.firstChild);
+  }
 }
 
 function createReadNoteArea(noteTitle, noteBody) {
@@ -80,6 +87,7 @@ function createReadNoteArea(noteTitle, noteBody) {
   noteDiv.className = 'note-div'
   noteParagraph.className = 'note-paragraph'
   noteHeader.className = 'note-header'
+  closeBtn.className = 'close-button'
   noteParagraph.innerHTML = noteBody
   noteHeader.innerHTML = noteTitle
   closeBtn.innerHTML = 'Close'
