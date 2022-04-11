@@ -17,9 +17,11 @@
   --text:     var(--not-black);
 }
 
-/* .dark-theme { */
-/*   --bg-color: var(--not-grey); */
-/* } */
+.dark-theme {
+  --bg-color: var(--not-grey);
+  --bg-side: var(--muted);
+  --text: var(--not-white);
+} 
 
 * {
   margin: 0;
@@ -49,6 +51,7 @@
 
 .side-nav span {
   color: var(--text);
+  margin-bottom: 10px;
 }
 
 .side-nav span p {
@@ -118,8 +121,8 @@ i {
 textarea {
   font-size: 1.6rem;
   font-family: 'Courier Prime', monospace;
-  width: 400px;
-  height: 200px;
+  width: 600px;
+  height: 400px;
   caret-color: var(--not-red);
   border: none;
   border-bottom: 2px solid var(--text);
@@ -139,11 +142,18 @@ footer p {
   font-size: var(--lrg-txt);
 }
 
+.note-taking-area {
+  width: 600px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .note-header {
   padding-bottom: 20px;
-  font-size: 2rem;
+  font-size: var(--lrg-txt);
   text-decoration: underline;
-  color: #3e8fb0;
+  color: #191724;
   font-family: 'Quicksand', sans-serif;
 }
 
@@ -154,29 +164,40 @@ footer p {
 }
 
 .save-button, .cancel-button {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   margin-left: 5px;
-  color: #191724;
+  color: var(--text);
   border: none;
   background-color: transparent;
   font-family: 'Libre Baskerville', serif;
 }
 
-.save-button:hover {
-  color: #31748f;
+.close-button:hover {
+  cursor: pointer;
 }
 
-.cancel-button:hover, .close-button:hover {
-  color: #eb6f92;
+.cancel-button:hover, .save-button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+i:hover {
+  cursor: pointer;
 }
 
 .notes-list li {
+  color: var(--text);
+  width: 150px;
+  text-align: center;
+  list-style-type: none;
   margin: 5px;
   font-size: 1.6rem;
+  font-family: 'Courier Prime', monospace;
 }
 
 .notes-list li:hover {
-  color: #3e8fb0;
+  list-style-type: disc;
+  cursor: pointer;
 }
 
 .note-div {
@@ -190,6 +211,7 @@ footer p {
 .close-button {
   font-size: 1.4rem;
   border: none;
+  margin-right: 2px;
   max-width: 20px;
   background-color: transparent;
   align-self: flex-end;
@@ -197,4 +219,7 @@ footer p {
 
 .note-div p {
   font-family: 'Courier Prime', monospace;
+  color: #191724;
+  white-space: pre-wrap;
 }
+

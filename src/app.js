@@ -56,12 +56,11 @@ function removeNote(evt) {
 function saveNoteArray(evt) {
   addBtn.style.display = 'block'
   const textarea = document.querySelector('textarea')
-  const arrayLines = textarea.value.split('\n')
-  const noteTitle = arrayLines.shift()
-  const noteBody = arrayLines
+  const noteBody = textarea.value.split('\n')
+  const noteTitle = noteBody.shift()
+  notes.push({title: noteTitle, noteBody: noteBody.join('\n'), id: notes.length + 1}) 
   console.log(notes)
-  notes.push({title: noteTitle, noteBody: noteBody, id: notes.length + 1}) 
-  saveSidenav(noteTitle, arrayLines)
+  saveSidenav(noteTitle, noteBody)
   removeNote(evt)
 }
 
@@ -91,7 +90,7 @@ function createReadNoteArea(noteTitle, noteBody) {
   noteParagraph.className = 'note-paragraph'
   noteHeader.className = 'note-header'
   closeBtn.className = 'close-button'
-  noteParagraph.innerHTML = noteBody
+  noteParagraph.innerHTML = noteBody.join('\n')
   noteHeader.innerHTML = noteTitle
   closeBtn.innerHTML = 'X'
   readArea.appendChild(noteDiv)
@@ -102,3 +101,14 @@ function createReadNoteArea(noteTitle, noteBody) {
     closeBtn.parentElement.remove()  
   })
 }
+
+//dark theme
+
+const themeToggle = document.querySelector('.theme-toggle')
+themeToggle.addEventListener('click', setDarkTheme)
+
+function setDarkTheme(evt) {
+  const DarkTheme = document.querySelector(".light-theme")
+  DarkTheme.classList.toggle("dark-theme")
+}
+
