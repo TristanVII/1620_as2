@@ -6,13 +6,15 @@ const notes = [
   }
 ]
 
-//create note taking area
+//global variables defined
 
 const addBtn = document.querySelector('i')
 const writeArea = document.querySelector('.write-note-area')
 const icons = document.querySelector('.icons')
 const sideNav = document.querySelector('.notes-list')
 const readArea = document.querySelector('.read-note-area')
+
+//create note taking area
 
 function addNote(evt) {
   addBtn.style.display = 'none'                    
@@ -52,7 +54,6 @@ function removeNote(evt) {
 
 //save button 
 
-
 function saveNoteArray(evt) {
   addBtn.style.display = 'block'
   const textarea = document.querySelector('textarea')
@@ -64,10 +65,13 @@ function saveNoteArray(evt) {
   removeNote(evt)
 }
 
+//appends an li to the sidenav ul, with the title of the note
+
 function saveSidenav(noteTitle, noteBody) {
   const liTitle = document.createElement('li')
   sideNav.appendChild(liTitle)
   liTitle.insertAdjacentHTML('afterbegin', noteTitle)
+  //creates event for each li appended, the event removes the current note displayed(if there is one) and removes the note-taking-area if it is open 
   liTitle.addEventListener('click', () => {
     removeReadNote()
     removeNote()
@@ -75,11 +79,14 @@ function saveSidenav(noteTitle, noteBody) {
   })
 }
 
+//removes the note being displayed --> note-div from read-note-area
 function removeReadNote() {
   while (readArea.firstChild) {
     readArea.removeChild(readArea.firstChild);
   }
 }
+
+//creates elements(div,h1,p) to insert into the readarea, including the Note title and Note body with a close button that calls remove()
 
 function createReadNoteArea(noteTitle, noteBody) {
   const noteDiv = document.createElement('div')
